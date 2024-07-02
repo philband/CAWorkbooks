@@ -2,7 +2,7 @@ $permissionsToAdd = "User.Read.All", "UserAuthenticationMethod.Read.All", "Group
 # static Graph AppId, do not change
 $graphAppId = "00000003-0000-0000-c000-000000000000"
 
-Connect-MgGraph
+Connect-MgGraph -Scopes "Application.ReadWrite.All,AppRoleAssignment.ReadWrite.All"
 $msi = Get-MgServicePrincipal -Filter "DisplayName eq 'Import-StrongAuthDashboadData'"
 $app = Get-MgServicePrincipal -Filter "AppId eq '$graphAppId'"
 foreach ($permission in $permissionsToAdd) {
